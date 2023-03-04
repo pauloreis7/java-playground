@@ -44,7 +44,7 @@ public class StudentFinalGrade {
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Type the student name: ");
-    final String name = scanner.nextLine();
+    scanner.nextLine();
 
     System.out.println("Type the student first quarter grade: ");
     final double firstQuarterGrade = scanner.nextDouble();
