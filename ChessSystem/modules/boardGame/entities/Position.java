@@ -1,6 +1,6 @@
 package ChessSystem.modules.boardGame.entities;
 
-class Position {
+public class Position {
   private int row;
   private int column;
 

@@ -1,12 +1,17 @@
 package ChessSystem.modules.chess.entities;
 
 import ChessSystem.modules.boardGame.entities.Board;
+import ChessSystem.modules.boardGame.entities.Position;
+import ChessSystem.modules.chess.entities.pieces.King;
+import ChessSystem.modules.chess.enums.Color;
 
 public class ChessMatch {
   private Board board;
 
   public ChessMatch() {
     board = new Board(8, 8);
+
+    initialSetup();
   }
 
   public ChessPiece[][] getPieces() {
@@ -19,5 +24,10 @@ public class ChessMatch {
     }
 
     return chessPieceMat;
+  }
+
+  private void initialSetup() {
+    board.placePiece(new King(board, Color.BLACK), new Position(2, 4));
+    board.placePiece(new King(board, Color.BLACK), new Position(2, 4));
   }
 }
