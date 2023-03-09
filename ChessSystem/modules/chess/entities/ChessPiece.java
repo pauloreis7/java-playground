@@ -4,7 +4,7 @@ import ChessSystem.modules.boardGame.entities.Board;
 import ChessSystem.modules.boardGame.entities.Piece;
 import ChessSystem.modules.chess.enums.Color;
 
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 
   private final Color color;
 
