@@ -53,6 +53,22 @@ public class Board {
     return isRowPositionValid && isColumnPositionValid;
   }
 
+  public Piece removePiece(final Position position) {
+    validatePosition(position);
+
+    Piece pieceToRemove = piece(position);
+
+    if (pieceToRemove == null) {
+      return null;
+    }
+
+    pieceToRemove.position = null;
+
+    pieces[position.getRow()][position.getColumn()] = null;
+
+    return pieceToRemove;
+  }
+
   private boolean positionExists(final Position position) {
     return positionExists(position.getRow(), position.getColumn());
   }
@@ -69,7 +85,7 @@ public class Board {
     }
   }
 
-  private boolean thereIsAPiece(final Position position) {
+  public boolean thereIsAPiece(final Position position) {
     validatePosition(position);
 
     return piece(position) != null;

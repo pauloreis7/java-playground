@@ -1,6 +1,8 @@
 package ChessSystem.modules.chess.errors;
 
-public class ChessException extends RuntimeException {
+import ChessSystem.modules.boardGame.errors.BoardException;
+
+public class ChessException extends BoardException {
   public ChessException(final String message) {
     super(message);
   }
