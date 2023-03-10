@@ -69,7 +69,7 @@ public class Board {
     return pieceToRemove;
   }
 
-  private boolean positionExists(final Position position) {
+  public boolean positionExists(final Position position) {
     return positionExists(position.getRow(), position.getColumn());
   }
 
