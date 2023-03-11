@@ -8,6 +8,7 @@ import ChessSystem.modules.chess.enums.Color;
 public abstract class ChessPiece extends Piece {
 
   private final Color color;
+  private int moveCount;
 
   public ChessPiece(final Board board, final Color color) {
     super(board);
@@ -17,6 +18,18 @@ public abstract class ChessPiece extends Piece {
 
   public Color getColor() {
     return color;
+  }
+
+  public int getMoveCount() {
+    return moveCount;
+  }
+
+  public void increaseMoveCount() {
+    moveCount++;
+  }
+
+  public void decreaseMoveCount() {
+    moveCount--;
   }
 
   public ChessPosition getChessPosition() {
