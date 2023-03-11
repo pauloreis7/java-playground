@@ -1,5 +1,8 @@
 package ChessSystem.modules.chess.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ChessSystem.modules.boardGame.entities.Board;
 import ChessSystem.modules.boardGame.entities.Piece;
 import ChessSystem.modules.boardGame.entities.Position;
@@ -9,12 +12,27 @@ import ChessSystem.modules.chess.enums.Color;
 import ChessSystem.modules.chess.errors.ChessException;
 
 public class ChessMatch {
+  private int turn;
+  private Color currentPlayer;
   private Board board;
+
+  private final List<Piece> piecesOnTheBoard = new ArrayList<>();
+  private final List<Piece> capturedPieces = new ArrayList<>();
 
   public ChessMatch() {
     board = new Board(8, 8);
+    turn = 1;
+    currentPlayer = Color.WHITE;
 
     initialSetup();
+  }
+
+  public int getTurn() {
+    return turn;
+  }
+
+  public Color getCurrentPlayer() {
+    return currentPlayer;
   }
 
   public ChessPiece[][] getPieces() {
@@ -44,6 +62,7 @@ public class ChessMatch {
     validateTargetPosition(source, target);
 
     Piece capturedPiece = makeMove(source, target);
+    nextTurn();
 
     return (ChessPiece) capturedPiece;
   }
@@ -54,12 +73,21 @@ public class ChessMatch {
 
     board.placePiece(pieceToMove, target);
 
+    if (capturedPiece != null) {
+      piecesOnTheBoard.remove(capturedPiece);
+      capturedPieces.add(capturedPiece);
+    }
+
     return capturedPiece;
   }
 
   private void validateSourcePosition(Position position) {
     if (!board.thereIsAPiece(position)) {
       throw new ChessException("There is no piece on source position");
+    }
+
+    if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
+      throw new ChessException("The chosen piece is not yours");
     }
 
     if (!board.piece(position).isThereAnyPossibleMove()) {
@@ -73,10 +101,16 @@ public class ChessMatch {
     }
   }
 
+  private void nextTurn() {
+    turn++;
+    currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
+  }
+
   private void placeNewPiece(final char column, final int row, final ChessPiece chessPiece) {
     final ChessPosition chessPosition = new ChessPosition(column, row);
 
     board.placePiece(chessPiece, chessPosition.toPosition());
+    piecesOnTheBoard.add(chessPiece);
   }
 
   private void initialSetup() {
