@@ -13,7 +13,6 @@ import ChessSystem.modules.chess.entities.ChessPosition;
 import ChessSystem.modules.chess.errors.ChessException;
 
 public class Main {
-
   public static void main(String[] args) {
     Locale.setDefault(Locale.US);
 
