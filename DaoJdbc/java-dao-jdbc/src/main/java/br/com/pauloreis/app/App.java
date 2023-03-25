@@ -29,15 +29,11 @@ public class App {
     System.out.println("\n === SELLER - TEST 2: seller findByDepartment ===\n");
     Department department = new Department(2, null);
     List<Seller> sellers = sellerDao.findByDepartment(department.getId());
-    for (Seller item : sellers) {
-      System.out.println(item);
-    }
+    sellers.forEach(System.out::println);
 
     System.out.println("\n === SELLER - TEST 3: seller findAll ===\n");
     sellers = sellerDao.findAll();
-    for (Seller item : sellers) {
-      System.out.println(item);
-    }
+    sellers.forEach(System.out::println);
 
     System.out.println("\n === SELLER - TEST 4: create seller ===\n");
     Seller newSeller = new Seller(random.nextInt(100), "Greg", "greg@gmail.com",
@@ -62,11 +58,8 @@ public class App {
     System.out.println(department);
 
     System.out.println("\n === DEPARTMENT - TEST 2: department findAll ===\n");
-    List<Department> list = departmentDao.findAll();
-
-    for (Department item : list) {
-      System.out.println(item);
-    }
+    List<Department> departments = departmentDao.findAll();
+    departments.forEach(System.out::println);
 
     System.out.println("\n === DEPARTMENT - TEST 3: department insert ===\n");
     Department newDepartment = new Department(random.nextInt(100), "Music");

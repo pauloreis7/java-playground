@@ -4,11 +4,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com.pauloreis</groupId>
-  <artifactId>java-dao-jdbc</artifactId>
+  <groupId>com.pauloreis</groupId>
+  <artifactId>jpa-hibernate</artifactId>
   <version>0.0.1</version>
 
-  <name>java-dao-jdbc</name>
+  <name>jpa-hibernate</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -19,11 +19,30 @@
   </properties>
 
   <dependencies>
-
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.6.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.1.7.Final</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.6.15.Final</version>
+      <type>pom</type>
+      <exclusions>
+        <exclusion>
+          <artifactId>hibernate-commons-annotations</artifactId>
+          <groupId>org.hibernate.common</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -79,4 +98,21 @@
       </plugins>
     </pluginManagement>
   </build>
+
+
+  <dependencyManagement>
+  
+
+    <dependencies>
+    
+
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>2.3.1</version>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
 </project>
