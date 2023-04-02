@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  database:
+    image: mongo
+    container_name: mongo-db
+    restart: always
+    tty: true
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mongo_social_media
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
